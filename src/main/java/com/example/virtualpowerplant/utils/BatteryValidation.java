@@ -2,6 +2,7 @@ package com.example.virtualpowerplant.utils;
 
 import com.example.virtualpowerplant.model.Battery;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BatteryValidation {
     public static void validateBattery(List<Battery> batteries) {
