@@ -3,8 +3,6 @@ package com.example.virtualpowerplant.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.UUID;
-
 
 @Data
 @NoArgsConstructor
@@ -12,9 +10,18 @@ import java.util.UUID;
 @Table(name = "battery")
 public class Battery {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @Column(name = "id", nullable = false, updatable = false)
+    private String id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "postcode")
     private String postcode;
+
+    @Column(name = "watt_capacity")
     private int wattCapacity;
+
 }
+
+

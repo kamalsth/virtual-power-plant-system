@@ -4,6 +4,7 @@ import com.example.virtualpowerplant.dto.BatteryResponseDto;
 import com.example.virtualpowerplant.model.Battery;
 import com.example.virtualpowerplant.repo.BatteryRepo;
 import com.example.virtualpowerplant.utils.BatteryValidation;
+import com.example.virtualpowerplant.utils.CommonUtils;
 import com.example.virtualpowerplant.utils.MsgResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class BatteryServiceImpl implements BatteryService {
     @Override
     public ResponseEntity<?> saveBatteries(List<Battery> batteries) {
         BatteryValidation.validateBattery(batteries);
+        batteries.forEach(battery -> battery.setId(CommonUtils.generateUUID()));
         batteryRepo.saveAll(batteries);
         return ResponseEntity.ok(new MsgResponse("Batteries saved successfully"));
     }
